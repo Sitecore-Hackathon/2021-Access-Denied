@@ -19,7 +19,7 @@
 ⟹ Write a clear description of your hackathon entry.  
 
   - Module Purpose
-	  - The major dilemma of all content authors is to get the stats of content and media that has been developed as part of the application. Most areas which we have heard about are "Knowing when was the item last published", "Getting audit logs for the item (like last saved and last published)", Getting the largest media item, Getting media items that are not being used by any of the contetn item etc.
+	  - The major dilemma of all content authors is to get the stats of content and media that has been developed as part of the application. Most areas which we have heard about are "Knowing when was the item last published", "Getting audit logs for the item (like last saved and last published)", Getting the largest media item, Getting media items that are not being used by any of the content items etc.
   - What problem was solved (if any)
 	  - We have Sitecore Powershell Extensions, one of the best reporting module available in the Sitecore market, but we wanted to develop something that assembles all the details under a single place which would be easily accessed by Content Authors and the details could be further used for troubleshooting or informational purposes.
     - How does this module solve it
