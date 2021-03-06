@@ -11,13 +11,17 @@
     <script src="Assets/js/popper.min.js"></script>
     <script src="Assets/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body onload="javascript:HideProgressBar()">
     <div class="container">
         <h2>Content Audit and Statistics</h2>
-        <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
         <form id="form1" runat="server">
             Item ID :&nbsp;
-            <asp:TextBox ID="TextBox1" runat="server" Height="21px" Width="361px"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" Height="35px" Width="381px"></asp:TextBox>
+            <br />
+            <br />
+            Select a Language :&nbsp;
+            <asp:DropDownList ID="languageDropDownList" runat="server" Height="49px" Width="140px">
+            </asp:DropDownList>
             <br />
             <br />
             <asp:RadioButtonList ID="RadioButtonList1" runat="server">
@@ -26,18 +30,22 @@
                 <asp:ListItem Value="2">Selected Item and Deescendants</asp:ListItem>
             </asp:RadioButtonList>
             <br />
-            <asp:Button ID="Button1" runat="server" Height="50px" OnClick="Button1_Click" Text="Get Content Stats" Width="216px" />
+            <asp:Button ID="Button1" runat="server" Height="50px" OnClick="Button1_Click" OnClientClick="javascript:ShowProgressBar()" Text="Get Content Stats" Width="216px" />
+            <br />
             <br />
 
             <asp:Label ID="labelResultcount" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
         </form>
-        <div id="accordion">
+        <div id="accordion" runat="server" visible="false">
+            <h6>Please click on each of them to view the results !!!</h6>
             <div class="card">
                 <div class="card-header">
                     <a class="card-link" data-toggle="collapse" href="#collapseOne">ITEMS WITH LAST UPDATED DATE AND IS PUBLISHED IN ALL DATABASES
                     </a>
                 </div>
-                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                <div id="collapseOne" class="collapse" data-parent="#accordion">
                     <div class="card-body">
                         <asp:Repeater runat="server" ID="RptItemUpdatedPublished">
                             <HeaderTemplate>
@@ -180,7 +188,21 @@
                 </div>
             </div>
         </div>
+        <div id="dvProgressBar" style="visibility: hidden; margin-left: 50%; margin-right: 50%;">
+            <img src="/sitecore/shell/themes/standard/images/sc-spinner32.gif">
+        </div>
     </div>
+    
+    <script type='text/javascript'>
+        function ShowProgressBar() {
+            document.getElementById('accordion').style.visibility = 'hidden';
+            document.getElementById('dvProgressBar').style.visibility = 'visible';
+        }
+
+        function HideProgressBar() {
+            document.getElementById('dvProgressBar').style.visibility = "hidden";
+        }
+    </script>
 </body>
 </html>
 

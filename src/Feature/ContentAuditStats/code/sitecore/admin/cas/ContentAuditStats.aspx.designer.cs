@@ -33,6 +33,15 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
+        /// languageDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList languageDropDownList;
+
+        /// <summary>
         /// RadioButtonList1 control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labelResultcount;
+
+        /// <summary>
+        /// accordion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordion;
 
         /// <summary>
         /// RptItemUpdatedPublished control.
