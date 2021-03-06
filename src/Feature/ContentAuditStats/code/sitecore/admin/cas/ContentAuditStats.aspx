@@ -10,136 +10,9 @@
     <script src="Assets/js/jquery.min.js"></script>
     <script src="Assets/js/popper.min.js"></script>
     <script src="Assets/js/bootstrap.min.js"></script>
-    <script src="/sitecore/shell/client/Speak/Assets/lib/core/1.1/sitecore-1.0.2.js"></script>
-    <script src="/sitecore/shell/client/Speak/Assets/lib/core/1.1/deps/backbone/backbone.1.0.0.js"></script>
-    <script src="/sitecore/shell/client/Speak/Assets/lib/core/2.0/deps/require.js"></script>
-    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/-/speak/v1/client/SheerUI.js" src="/-/speak/v1/client/SheerUI.js"></script>
-    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="sheerui" src="/sitecore/shell/controls/sitecore.js"></script>
-    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="sheeruibrowser" src="/sitecore/shell/controls/browser.js"></script>
     <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Applications/ControlPanel/ControlPanel.css" />
-    <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Speak/Assets/css/speak-default-theme.css" />    
-    <style type="text/css">
-        h3.pageReference {
-            font-weight: normal;
-            display: inline;
-        }
-
-        td {
-            border-bottom: 1px solid #ddd;
-            width: 50%;
-        }
-
-        .sc-globalHeader-content-cas {
-            margin-right: 15px;
-            margin-left: 15px;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .sc-applicationContent-cas {
-            color: #121212;
-            border-color: #cccccc;
-            background-color: #f0f0f0;
-            padding: 0;
-        }
-
-        .sc-applicationHeader-content -cas {
-            position: relative;
-            padding: 10px 15px;
-            max-width: 1200px;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            z-index: 9;
-            clear: both;
-        }
-
-        .sc .sc-text {
-            margin: 15px;
-        }
-
-        .card a {
-            font-size: 15px;
-        }
-
-        .panel-heading-full.panel-heading {
-            padding: 0;
-        }
-
-        .panel-heading-full .panel-title {
-            padding: 10px 15px;
-        }
-
-            .panel-heading-full .panel-title::after {
-                top: 10px;
-                right: 15px;
-            }
-
-        .radiobuttonlist {
-            background-color: initial;
-        }
-
-            .radiobuttonlist td {
-                border: none;
-            }
-
-                .radiobuttonlist td label {
-                    padding-left: 10px;
-                }
-
-        .submit-button {
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            color: black;
-            border: 2px solid #474747;
-            border-radius: 10px;
-        }
-
-            .submit-button:hover {
-                background-color: #969696;
-                color: white;
-            }
-
-        .card-header {
-            cursor: pointer;
-        }
-
-        .table-data {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            table-layout: fixed;
-            width: 100%;
-        }
-
-            .table-data td {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-
-            .table-data tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            .table-data tr:hover {
-                background-color: #ddd;
-            }
-
-            .table-data th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #969696;
-                color: white;
-                padding-left:8px;
-            }
-    </style>
+    <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Speak/Assets/css/speak-default-theme.css" />
+    <link rel="stylesheet" href="Assets/css/main.css">
 </head>
 <body onload="javascript:HideProgressBar()" class="sc">
     <div class="sc-list">
@@ -159,7 +32,7 @@
                     <div class="col-md-6">
                         <div class="sc-globalHeader-loginInfo">
                             <ul data-sc-id="c_842991340c50b497" class="sc-accountInformation sc_AccountInformation_5 data-sc-registered" data-sc-require="/-/speak/v1/business/AccountInformation.js">
-                                <li><a class="logout data-sc-registered" data-bind="click:logout" href="#">Log out</a></li>
+                                <%--<li><a class="logout data-sc-registered" data-bind="click:logout" href="#">Log out</a></li>--%>
 
                             </ul>
                         </div>
@@ -181,7 +54,11 @@
 
                 </header>
                 <div class="container">
+
                     <form id="form1" runat="server" style="margin: 10px 0 10px 0;">
+                        <p><a href="/sitecore/admin/cas/CASDashboard.aspx">Back to Dashboard</a></p>
+                        <h4>This dashboard will show reports of <strong>Items updated with laste updated date and publish status</strong>, <strong>Items with broken links</strong>, <strong>Items with personalization</strong>, <strong>Items with workflow history</strong> and, <strong>Items Audit History</strong>.</h4>
+                        <br />
                         Item ID or Path :&nbsp;
             <asp:TextBox ID="TextBox1" runat="server" Height="35px" Width="381px"></asp:TextBox>
                         <br />
@@ -192,9 +69,9 @@
                         <br />
                         <br />
                         <asp:RadioButtonList ID="RadioButtonList1" class="radiobuttonlist" runat="server">
-                            <asp:ListItem Value="0" Selected="True">Only Selected Item</asp:ListItem>
-                            <asp:ListItem Value="1">Selected Item and Children</asp:ListItem>
-                            <asp:ListItem Value="2">Selected Item and Descendants</asp:ListItem>
+                            <asp:ListItem Value="0" Selected="True">Only Item</asp:ListItem>
+                            <asp:ListItem Value="1">Include Children (Immediate sub-items only)</asp:ListItem>
+                            <asp:ListItem Value="2">Include Descendants (All sub-items)</asp:ListItem>
                         </asp:RadioButtonList>
                         <br />
                         <asp:Button class="submit-button" ID="Button1" runat="server" Height="35px" OnClick="Button1_Click" OnClientClick="javascript:ShowProgressBar()" Text="Go" Width="216px" />
@@ -203,15 +80,13 @@
 
                         <asp:Label ID="labelResultcount" Height="35px" Style="font-size: 15px;" runat="server" Text="Label"></asp:Label>
                         <br />
-                        <br />
                     </form>
                     <div id="accordion" class="accordion" runat="server" visible="false">
                         <h6 style="font-size: 15px;">Click on each below titles to view results !!!</h6>
                         <div class="card">
                             <div class="card-header" data-toggle="collapse" href="#collapseOne">
-                                <a class="card-link panel-title">
-                                    <i class="fa fa-angle-right"></i>
-                                    ITEMS WITH LAST UPDATED DATE AND IS PUBLISHED IN ALL DATABASES
+                                <a class="card-link">                                    
+                                    Items with last updated date and is published in all databases
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion">
@@ -242,7 +117,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header" data-toggle="collapse" href="#collapseTwo">
-                                <a class="collapsed card-link panel-title">ITEMS WITH BROKEN LINKS REPORT
+                                <a class="collapsed card-link">Items with broken links
                                 </a>
                             </div>
                             <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -271,7 +146,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header" data-toggle="collapse" href="#collapseThree">
-                                <a class="collapsed card-link panel-title">ITEMS WITH PERSONALIZATION REPORT
+                                <a class="collapsed card-link">Items with personalization
                                 </a>
                             </div>
                             <div id="collapseThree" class="collapse" data-parent="#accordion">
@@ -300,7 +175,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header" data-toggle="collapse" href="#collapseFour">
-                                <a class="collapsed card-link panel-title">ITEMS WITH WORKFLOW HISTORY REPORT
+                                <a class="collapsed card-link">Items with workflow details (workflow history of last 15 days)
                                 </a>
                             </div>
                             <div id="collapseFour" class="collapse" data-parent="#accordion">
@@ -331,7 +206,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header" data-toggle="collapse" href="#collapseFive">
-                                <a class="collapsed card-link panel-title">ITEMS AUDIT LOGS
+                                <a class="collapsed card-link">Items audit history of last 15 days
                                 </a>
                             </div>
                             <div id="collapseFive" class="collapse" data-parent="#accordion">
@@ -362,26 +237,10 @@
                     <div id="dvProgressBar" style="visibility: hidden; margin-left: 50%; margin-right: 50%;">
                         <img src="/sitecore/shell/themes/standard/images/sc-spinner32.gif">
                     </div>
-                </div>
-
-                <script type='text/javascript'>
-                    function ShowProgressBar() {
-                        document.getElementById('accordion').style.visibility = 'hidden';
-                        document.getElementById('dvProgressBar').style.visibility = 'visible';
-                    }
-
-                    function HideProgressBar() {
-                        document.getElementById('dvProgressBar').style.visibility = "hidden";
-                    }
-                </script>
+                </div>                
             </section>
-
-
+            <script src="Assets/js/main.js"></script>
         </div>
-
     </div>
 </body>
 </html>
-</body>
-</html>
-

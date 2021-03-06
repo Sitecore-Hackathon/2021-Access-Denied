@@ -96,7 +96,7 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ImageItemNoAltText.cs" />
+    <Compile Include="Models\MediaItemDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sitecore\admin\cas\MediaAuditStats.aspx.cs">
       <DependentUpon>MediaAuditStats.aspx</DependentUpon>
