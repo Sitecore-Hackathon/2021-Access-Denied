@@ -24,9 +24,8 @@
 	    - Media Items: **Media items with empty Alt field**,  **Media items grouped by file extension and size**,  **Media items updated in last 15 days**,  **Unused media items**.
 
 ## Video link
-⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
-⟹ [Replace this Video link](#video-link)
+⟹ [Content Audit & Statistics - CAS](https://youtu.be/3VHIPGHizX8)
 
 ## Installation instructions
 
