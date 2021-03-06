@@ -1,4 +1,5 @@
 
+
   
 # Hackathon Submission Entry form
 ## Team name
@@ -14,8 +15,13 @@
 ⟹ Write a clear description of your hackathon entry.  
 
   - Module Purpose
+	  - The major dilemma of all content authors is to get the stats of content and media that has been developed as part of the application. Most areas which we have heard about are "Knowing when was the item last published", "Getting audit logs for the item (like last saved and last published)", Getting the largest media item, Getting media items that are not being used by any of the contetn item etc.
   - What problem was solved (if any)
+	  - We have Sitecore Powershell Extensions, one of the best reporting module available in the Sitecore market, but we wanted to develop something that assembles all the details under a single place which would be easily accessed by Content Authors and the details could be further used for troubleshooting or informational purposes.
     - How does this module solve it
+	    - CAS module provides following reports for content items and media items:
+	    - Content Items: **Items updated with last updated date and publish status**,  **Items with broken links**,  **Items with personalization**,  **Items with workflow history**  and,  **Items Audit History**.
+	    - Media Items: **Media items with empty Alt field**,  **Media items grouped by file extension and size**,  **Media items updated in last 15 days**,  **Unused media items**.
 
 ## Video link
 ⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
@@ -46,6 +52,3 @@
 	![Hackathon Logo](UsageImages/ContentAuditStats.png)
 	- Media Audit & Statistics
 	![Hackathon Logo](UsageImages/MediaAuditStats.png)
-
-## Comments
-If you'd like to make additional comments that is important for your module entry.
