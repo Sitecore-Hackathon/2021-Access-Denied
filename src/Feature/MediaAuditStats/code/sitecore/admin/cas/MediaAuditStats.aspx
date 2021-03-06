@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Media Audit and Statistics</title>
+    <title>Media Audit & Statistics</title>    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
     <script src="Assets/js/jquery.min.js"></script>
@@ -12,46 +12,46 @@
     <script src="Assets/js/bootstrap.min.js"></script>
     <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Applications/ControlPanel/ControlPanel.css" />
     <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Speak/Assets/css/speak-default-theme.css" />
-    <style type="text/css">
+     <style type="text/css">
         h3.pageReference {
             font-weight: normal;
             display: inline;
         }
-
         td {
             border-bottom: 1px solid #ddd;
             width: 50%;
         }
-
         .sc-globalHeader-content-cas {
-            margin-right: 15px;
-            margin-left: 15px;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
+    margin-right: 15px;
+    margin-left: 15px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
         .sc-applicationContent-cas {
-            color: #121212;
-            border-color: #cccccc;
-            background-color: #f0f0f0;
-            padding: 0;
-        }
-
-        .sc-applicationHeader-content -cas {
-            position: relative;
-            padding: 10px 15px;
-            max-width: 1200px;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            z-index: 9;
-            clear: both;
-        }
-
+    color: #121212;
+    border-color: #cccccc;
+    background-color: #f0f0f0;
+    padding: 0;
+}
+        .sc-applicationHeader-content -cas{
+    position: relative;
+ 
+    padding: 10px 15px;
+    max-width: 1200px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 9;
+    clear: both;
+}
         .sc .sc-text {
-            margin: 15px;
-        }
+    margin: 15px;
+}
+         .card a {
+             font-size:15px;
+         }
     </style>
 </head>
 <body class="sc">
