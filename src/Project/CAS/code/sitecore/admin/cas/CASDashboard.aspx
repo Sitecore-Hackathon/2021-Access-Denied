@@ -98,7 +98,7 @@
 <div class="row row-0">                    <div class="col-md-4">
                         <div class="sc-controlpanel-box">
                             <div class="sc-controlpanel-box-header">
-                                <h4><a href="ContentAuditStats.aspx" ><img src="/temp/iconcache/launchpadicons/48x48/contenteditor.png" class="" alt="" width="48" height="48" border="0">Content Audit & Stats</a></h4>
+                                <h4><a href="ContentAuditStats.aspx" ><img src="/temp/iconcache/launchpadicons/48x48/contenteditor.png" class="" alt="" width="48" height="48" border="0">Content Audit & Statistics</a></h4>
                             </div>
 
                            
@@ -107,7 +107,7 @@
                     <div class="col-md-4">
                         <div class="sc-controlpanel-box">
                             <div class="sc-controlpanel-box-header">
-                                <h4><a href="MediaAuditStats.aspx" ><img src="/temp/iconcache/launchpadicons/48x48/medialib.png" class="" alt="" width="48" height="48" border="0">Media Audit & Stats</a></h4>
+                                <h4><a href="MediaAuditStats.aspx" ><img src="/temp/iconcache/launchpadicons/48x48/medialib.png" class="" alt="" width="48" height="48" border="0">Media Audit & Statistics</a></h4>
                             </div>
 
                             
