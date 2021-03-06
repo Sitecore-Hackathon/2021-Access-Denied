@@ -1,53 +1,87 @@
-
-
-  
 # Hackathon Submission Entry form
+
+> __Important__  
+> 
+> Copy and paste the content of this file into README.md or face automatic __disqualification__  
+> All headlines and subheadlines shall be retained if not noted otherwise.  
+> Fill in text in each section as instructed and then delete the existing text, including this blockquote.
+
+You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
+
 ## Team name
-**Access Denied**
-⟹ Khushboo Sorthiya
-⟹ Sreekrishnan K S
-⟹ Brijesh Patel
+⟹ Write the name of your Hackathon team here
 
 ## Category
-⟹ The best enhancement to Sitecore Admin (XP) for Content Editors & Marketers
+⟹ Write the name of the selected category
 
 ## Description
 ⟹ Write a clear description of your hackathon entry.  
 
   - Module Purpose
-	  - The major dilemma of all content authors is to get the stats of content and media that has been developed as part of the application. Most areas which we have heard about are "Knowing when was the item last published", "Getting audit logs for the item (like last saved and last published)", Getting the largest media item, Getting media items that are not being used by any of the contetn item etc.
   - What problem was solved (if any)
-	  - We have Sitecore Powershell Extensions, one of the best reporting module available in the Sitecore market, but we wanted to develop something that assembles all the details under a single place which would be easily accessed by Content Authors and the details could be further used for troubleshooting or informational purposes.
     - How does this module solve it
-	    - CAS module provides following reports for content items and media items:
-	    - Content Items: **Items updated with last updated date and publish status**,  **Items with broken links**,  **Items with personalization**,  **Items with workflow history**  and,  **Items Audit History**.
-	    - Media Items: **Media items with empty Alt field**,  **Media items grouped by file extension and size**,  **Media items updated in last 15 days**,  **Unused media items**.
+
+_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
 
 ## Video link
+⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
-⟹ [Content Audit & Statistics - CAS](https://youtu.be/3VHIPGHizX8)
+⟹ [Replace this Video link](#video-link)
+
+
+
+## Pre-requisites and Dependencies
+
+⟹ Does your module rely on other Sitecore modules or frameworks?
+
+- List any dependencies
+- Or other modules that must be installed
+- Or services that must be enabled/configured
+
+_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
 
 ## Installation instructions
+⟹ Write a short clear step-wise instruction on how to install your module.  
 
-1. Use the Sitecore Installation wizard to install package.
-2. Login to Sitecore having an administrator role.
-3. From Sitecore Launchpad open Desktop.
-4. Navigate to Start Menu -> Development Tools -> Installation Wizard.
-5. Download  [CAS](https://github.com/Sitecore-Hackathon/2021-Access-Denied/blob/main/package/CAS%20Dashboard-1.0.zip) Sitecore Package.
-6. Using upload package upload it to sitecore.
-7. Once upload is complete click next.
-8. Click on Install button of "Install a Package" dialog.
+> _A simple well-described installation process is required to win the Hackathon._  
+> Feel free to use any of the following tools/formats as part of the installation:
+> - Sitecore Package files
+> - Docker image builds
+> - Sitecore CLI
+> - msbuild
+> - npm / yarn
+> 
+> _Do not use_
+> - TDS
+> - Unicorn
+ 
+f. ex. 
+
+1. Start docker environment using `.\Start-Hackathon.ps1`
+2. Open solution in Visual Studio and run build
+3. Use the Sitecore Installation wizard to install the [package](#link-to-package)
+4. ...
+5. profit
+
+### Configuration
+⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
+
+_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
 
 ## Usage instructions
-⟹ Once a user is logged into Sitecore using /sitecore/login url, "Content Audit And Statistics - CAS" button is available which navigates a user to CAS Dashboard page.
-![Hackathon Logo](UsageImages/Sitecore-Launchpad-CAS.png)
-⟹ From CAS Dashboard page, a content author can navigate to "Content Audit & Statistics" or "Media Audit & Statistics" pages
-![Hackathon Logo](UsageImages/CAS-Dashboard.png)
-⟹ On Content Audit & Statistics page,
-- Enter Sitecore Item ID or Path
-- Select Language
-- Select if audit or stats for selected item, immediate children or descendants is required. Hit Go button to look at the generated report.
-	- Content Audit & Statistics
-	![Hackathon Logo](UsageImages/ContentAuditStats.png)
-	- Media Audit & Statistics
-	![Hackathon Logo](UsageImages/MediaAuditStats.png)
+⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
+
+Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
+
+![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
+
+You can embed images of different formats too:
+
+![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
+
+And you can embed external images too:
+
+![Random](https://thiscatdoesnotexist.com/)
+
+## Comments
+If you'd like to make additional comments that is important for your module entry.
