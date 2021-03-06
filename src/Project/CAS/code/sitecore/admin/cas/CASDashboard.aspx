@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Content Audit & Statistics - Dashboard</title>
-    <link rel="Stylesheet" type="text/css" href="/sitecore/shell/themes/standard/default/WebFramework.css" />
+       <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Applications/ControlPanel/ControlPanel.css" />
     <link rel="Stylesheet" type="text/css" href="/sitecore/shell/client/Speak/Assets/css/speak-default-theme.css" />
     
     <style type="text/css">
@@ -16,6 +16,37 @@
             border-bottom: 1px solid #ddd;
             width: 50%;
         }
+        .sc-globalHeader-content-cas {
+    margin-right: 15px;
+    margin-left: 15px;
+    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+        .sc-applicationContent-cas {
+    color: #121212;
+    border-color: #cccccc;
+    background-color: #f0f0f0;
+    padding: 0;
+      
+
+}
+
+        .sc-applicationHeader-content -cas{
+    position: relative;
+ 
+    padding: 10px 15px;
+    max-width: 1200px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 9;
+    clear: both;
+}
+        .sc .sc-text {
+    margin: 15px;
+}
     </style>
 </head>
 <body class="sc">
@@ -23,7 +54,7 @@
     
     <div class="container-narrow">
       <header class="sc-globalHeader">
-  <div class="row sc-globalHeader-content">  
+  <div class="row sc-globalHeader-content-cas">  
   <div class="col-md-6">
     <div class="sc-globalHeader-startButton">
       <a class="sc-global-logo medium" href="/sitecore/shell/sitecore/client/Applications/Launchpad"></a>
@@ -46,11 +77,11 @@
 </div>
 </header>
   
-<section class="sc-applicationContent">
+<section class="sc-applicationContent-cas">
   <header class="sc-applicationHeader">
   
 <div class="sc-applicationHeader-row1 no-breadcrumb">
-  <div class="sc-applicationHeader-content">
+  <div class="sc-applicationHeader-content-cas">
     <div class="sc-applicationHeader-title">
       <span data-sc-id="HeaderTitle" class="sc-text sc_Text_2 data-sc-registered" data-bind="text: text, visible: isVisible" data-sc-require="/-/speak/v1/business/text.js">Content Audit & Statistics - Dashboard</span>
     </div>
@@ -67,7 +98,7 @@
 <div class="row row-0">                    <div class="col-md-4">
                         <div class="sc-controlpanel-box">
                             <div class="sc-controlpanel-box-header">
-                                <h4><a href="ContentAuditStats.aspx" target="_blank"><img src="/temp/iconcache/office/24x24/gearwheel.png" class="" alt="" width="24" height="24" border="0">Content Audit & Stats</a></h4>
+                                <h4><a href="ContentAuditStats.aspx" ><img src="/temp/iconcache/launchpadicons/48x48/contenteditor.png" class="" alt="" width="48" height="48" border="0">Content Audit & Statistics</a></h4>
                             </div>
 
                            
@@ -76,7 +107,7 @@
                     <div class="col-md-4">
                         <div class="sc-controlpanel-box">
                             <div class="sc-controlpanel-box-header">
-                                <h4><a href="/MediaAuditStats.aspx" target="_blank"><img src="/temp/iconcache/office/24x24/data.png" class="" alt="" width="24" height="24" border="0">Media Audit & Stats</a></h4>
+                                <h4><a href="MediaAuditStats.aspx" ><img src="/temp/iconcache/launchpadicons/48x48/medialib.png" class="" alt="" width="48" height="48" border="0">Media Audit & Statistics</a></h4>
                             </div>
 
                             
