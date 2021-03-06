@@ -68,6 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates.cs" />
     <None Include="Properties\PublishProfiles\Default.pubxml" />
+    <Content Include="sitecore\shell\Themes\Standard\cas.zip" />
     <None Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
