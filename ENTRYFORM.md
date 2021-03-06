@@ -34,12 +34,18 @@
 
 ## Usage instructions
 ⟹ Once a user is logged into Sitecore using /sitecore/login url, "Content Audit And Statistics - CAS" button is available which navigates a user to CAS Dashboard page.
-⟹ From CAS Dashboard page a content author can navigate to "Content Audit & Statistics" or "Media Audit & Statistics" pages
-⟹ 
+![Hackathon Logo](UsageImages/Sitecore-Launchpad-CAS.png)
+⟹ From CAS Dashboard page, a content author can navigate to "Content Audit & Statistics" or "Media Audit & Statistics" pages
+![Hackathon Logo](UsageImages/CAS-Dashboard.png)
+⟹ On Content Audit & Statistics page,
+- Enter Sitecore Item ID or Path
+- Select Language
+- Select if audit or stats for selected item, immediate children or descendants is required. Hit Go button to look at the generated report.
+![Hackathon Logo](UsageImages/ContentAuditStats.png)
 
 Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
 
-![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
+
 
 You can embed images of different formats too:
 
