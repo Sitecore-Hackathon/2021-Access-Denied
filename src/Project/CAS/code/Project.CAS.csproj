@@ -69,8 +69,10 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="sitecore\admin\cas\Assets\css\bootstrap.min.css" />
+    <Content Include="sitecore\admin\cas\Assets\css\main.css" />
     <Content Include="sitecore\admin\cas\Assets\js\bootstrap.min.js" />
     <Content Include="sitecore\admin\cas\Assets\js\jquery.min.js" />
+    <Content Include="sitecore\admin\cas\Assets\js\main.js" />
     <Content Include="sitecore\admin\cas\Assets\js\popper.min.js" />
     <Content Include="sitecore\shell\Themes\Standard\cas.zip" />
     <None Include="Web.config" />

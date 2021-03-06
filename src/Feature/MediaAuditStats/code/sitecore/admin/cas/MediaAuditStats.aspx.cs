@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Feature.MediaAuditStats.sitecore.admin.cas
 {
@@ -13,46 +15,91 @@ namespace Feature.MediaAuditStats.sitecore.admin.cas
     {
         Database master = Sitecore.Configuration.Factory.GetDatabase("master");
 
+        public override void VerifyRenderingInServerForm(Control control) { }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClearLables();
             if (!Sitecore.Context.User.IsAdministrator)
             {
                 Response.Redirect("http://" + HttpContext.Current.Request.Url.Host + "/sitecore/login?returnUrl=/sitecore/admin/cas/mediaauditstats.aspx");
             }
+            ClearLables();
+            accordion.Visible = false;
         }
 
         protected void MediaAuditStats_Click(object sender, EventArgs e)
         {
-            var mediaRootItem = master.GetItem(TxtItemPath.Text);
-            if (mediaRootItem != null)
+            try
             {
-                List<Item> items = new List<Item>();
-                if (mediaRootItem.TemplateID != Sitecore.TemplateIDs.MediaFolder)
-                    items.Add(mediaRootItem);
-
-                var descendants = mediaRootItem.Axes.GetDescendants();
-                if (descendants.Any())
-                    items.AddRange(descendants.Where(x => x.TemplateID != Sitecore.TemplateIDs.MediaFolder));
-
-                if (items.Any())
+                accordion.Visible = false;
+                string itemPathOrId = TxtItemPath.Text;
+                if (string.IsNullOrEmpty(itemPathOrId))
                 {
-                    GetMeidaItemsNoAltText(items);
-                    GetMediaItemsByType(items);
-                    GetMediaItemsLastUpdated(items);
-                    GetUnusedMediaItems(items);
+                    LblMessage.Text = "Please specify media item id or path.";
+                    return;
+                }
+                if (!itemPathOrId.ToLower().StartsWith("/sitecore/media library"))
+                {
+                    LblMessage.Text = "Please provide valid media item path or id.";
+                    return;
+                }
+                var mediaRootItem = master.GetItem(TxtItemPath.Text);
+                if (mediaRootItem != null)
+                {
+                    List<Item> items = GetItems(mediaRootItem);
+
+                    if (items.Any())
+                    {
+                        accordion.Visible = true;
+                        GetMeidaItemsNoAltText(items);
+                        GetMediaItemsByType(items);
+                        GetMediaItemsLastUpdated(items);
+                        GetUnusedMediaItems(items);
+                    }
+                    else
+                    {
+                        ClearLables();
+                        accordion.Visible = false;
+                        LblMessage.Text = "There is no media item under this folder.";
+                    }
                 }
                 else
                 {
                     ClearLables();
-                    LblMessage.Text = "There is no media item under this folder.";
+                    accordion.Visible = false;
+                    LblMessage.Text = "Item does not exits in master database. Please check your item path.";
                 }
             }
-            else
+            catch (Exception ex)
             {
+                Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);
                 ClearLables();
-                LblMessage.Text = "Item does not exits in master database. Please check your item path.";
+                LblMessage.Text = "There is some error occurred. Please try after some time.";
             }
+        }
+
+        private List<Item> GetItems(Item mediaRootItem)
+        {
+            List<Item> items = new List<Item>();
+            if (mediaRootItem.TemplateID != Sitecore.TemplateIDs.MediaFolder)
+                items.Add(mediaRootItem);
+
+            var selectedRadioButtonValue = RbIcludeChildItems.SelectedValue;
+            switch (selectedRadioButtonValue)
+            {
+                case "1":
+                    List<Item> childItems = mediaRootItem.GetChildren().ToList();
+                    if (childItems.Any()) { items.AddRange(childItems.Where(x => x.TemplateID != Sitecore.TemplateIDs.MediaFolder)); }
+                    break;
+                case "2":
+                    List<Item> descendantItems = mediaRootItem.Axes.GetDescendants().ToList();
+                    if (descendantItems.Any()) { items.AddRange(descendantItems.Where(x => x.TemplateID != Sitecore.TemplateIDs.MediaFolder)); }
+                    break;
+                default:
+                    break;
+            }
+
+            return items;
         }
 
         private void GetMeidaItemsNoAltText(List<Item> items)
@@ -156,7 +203,6 @@ namespace Feature.MediaAuditStats.sitecore.admin.cas
 
         private static int GetLinkedItemsCount(Item refItem)
         {
-            // getting all linked Items that refer to the “refItem” Item
             return Globals.LinkDatabase.GetReferrerCount(refItem);
         }
 
@@ -170,6 +216,74 @@ namespace Feature.MediaAuditStats.sitecore.admin.cas
             LblUnusedMedia.Text = "";
             LblImageItemNoAltText.Text = "";
             LblMediaItemsLastUpdated.Text = "";
+        }
+
+        //TODO
+        protected void Recyle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (RepeaterItem rptItem in RptUnsedMedia.Items)
+                {
+                    CheckBox chkItem = (CheckBox)rptItem.FindControl("chkItem");
+                    if (chkItem.Checked)
+                    {
+                        Label lblItemPath = (Label)rptItem.FindControl("lblItemPath");
+                        if (!String.IsNullOrEmpty(lblItemPath.Text))
+                        {
+                            Item item = master.GetItem(lblItemPath.Text);
+                            if (item != null)
+                            {
+                                item.Recycle();
+                            }
+                        }
+                    }
+                }
+                var mediaRootItem = master.GetItem(TxtItemPath.Text);
+                var items = GetItems(mediaRootItem);
+                GetUnusedMediaItems(items);
+                LblMessage.Text = "Selected item(s) has been moved to Recycle bin. You can restore those from Recycle bin if required.";
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);
+                ClearLables();
+                LblMessage.Text = "There is some error occurred. Please try after some time.";
+            }
+        }
+
+        //TODO
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (RepeaterItem rptItem in RptUnsedMedia.Items)
+                {
+                    CheckBox chkItem = (CheckBox)rptItem.FindControl("chkItem");
+                    if (chkItem.Checked)
+                    {
+                        Label lblItemPath = (Label)rptItem.FindControl("lblItemPath");
+                        if (!String.IsNullOrEmpty(lblItemPath.Text))
+                        {
+                            Item item = master.GetItem(lblItemPath.Text);
+                            if (item != null)
+                            {
+                                item.Delete();
+                            }
+                        }
+                    }
+                }
+                var mediaRootItem = master.GetItem(TxtItemPath.Text);
+                var items = GetItems(mediaRootItem);
+                GetUnusedMediaItems(items);
+                LblMessage.Text = "Selected item(s) has been deleted permanently.";
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);
+                ClearLables();
+                LblMessage.Text = "There is some error occurred. Please try after some time.";
+            }
         }
     }
 }

@@ -24,6 +24,15 @@ namespace Feature.MediaAuditStats.sitecore.admin.cas
         protected global::System.Web.UI.WebControls.TextBox TxtItemPath;
 
         /// <summary>
+        /// RbIcludeChildItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RbIcludeChildItems;
+
+        /// <summary>
         /// LblMessage control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace Feature.MediaAuditStats.sitecore.admin.cas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblMessage;
+
+        /// <summary>
+        /// accordion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordion;
 
         /// <summary>
         /// LblImageItemNoAltText control.
