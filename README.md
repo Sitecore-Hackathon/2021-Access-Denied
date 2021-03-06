@@ -55,4 +55,3 @@
 	![Hackathon Logo](UsageImages/ContentAuditStats.png)
 	- Media Audit & Statistics
 	![Hackathon Logo](UsageImages/MediaAuditStats.png)
-
