@@ -1,16 +1,16 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Feature.ContentAuditStats")]
+[assembly: AssemblyTitle("Feature.MediaAuditStats")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Feature.ContentAuditStats")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCompany("HI")]
+[assembly: AssemblyProduct("Feature.MediaAuditStats")]
+[assembly: AssemblyCopyright("Copyright © HI 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("47b4999c-e01a-448a-9bb1-d7c4f514591a")]
+[assembly: Guid("48cd0ccd-7e76-4121-b43a-f4d8afb15767")]
 
 // Version information for an assembly consists of the following four values:
 //
