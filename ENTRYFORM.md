@@ -1,4 +1,5 @@
 
+  
 # Hackathon Submission Entry form
 ## Team name
 **Access Denied**
@@ -27,7 +28,7 @@
 2. Login to Sitecore having an administrator role.
 3. From Sitecore Launchpad open Desktop.
 4. Navigate to Start Menu -> Development Tools -> Installation Wizard.
-5. Download  [CAS](#link-to-package) Sitecore Package.
+5. Download  [CAS](https://github.com/Sitecore-Hackathon/2021-Access-Denied/blob/main/package/CAS%20Dashboard-1.0.zip) Sitecore Package.
 6. Using upload package upload it to sitecore.
 7. Once upload is complete click next.
 8. Click on Install button of "Install a Package" dialog.
@@ -43,17 +44,6 @@
 - Select if audit or stats for selected item, immediate children or descendants is required. Hit Go button to look at the generated report.
 ![Hackathon Logo](UsageImages/ContentAuditStats.png)
 
-Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
-
-
-
-You can embed images of different formats too:
-
-![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
-
-And you can embed external images too:
-
-![Random](https://thiscatdoesnotexist.com/)
 
 ## Comments
 If you'd like to make additional comments that is important for your module entry.
