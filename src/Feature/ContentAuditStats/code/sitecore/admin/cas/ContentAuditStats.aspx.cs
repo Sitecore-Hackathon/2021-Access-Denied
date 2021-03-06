@@ -44,7 +44,7 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
             var itemId = TextBox1.Text;
             if (string.IsNullOrEmpty(itemId))
             {
-                labelResultcount.Text = "Please specify Item ID";
+                labelResultcount.Text = "Please specify Item ID or Path";
                 return;
             }
             var language = languageDropDownList.SelectedValue;
@@ -107,6 +107,7 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
                     var datasourceWorkFlowHistory = finalItems.Select(x => new ItemsWorkflowHistoryModel()
                     {
                         ItemPath = x.Paths.FullPath,
+                        CurrentWorkflowState = GetCurrentWorkFlowState(x),
                         WorkflowHistory = GetFinalString(GetWorkflowHistory(x, language))
 
                     });
@@ -160,6 +161,35 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
         public DateTime GetLastUpdated(Item item)
         {
             return Sitecore.DateUtil.IsoDateToDateTime(item.Fields[Sitecore.FieldIDs.Updated].Value);
+        }
+
+        public string GetCurrentWorkFlowState(Item item)
+        {
+            var workflowID = item.Fields[Sitecore.FieldIDs.Workflow].Value;
+            if (!string.IsNullOrWhiteSpace(workflowID))
+            {
+                IWorkflow itemWorkflow = database.WorkflowProvider.GetWorkflow(workflowID);
+                if (itemWorkflow != null)
+                {
+                    var currentState = itemWorkflow.GetState(item);
+                    if (currentState != null)
+                    {
+                        return $"Item is in {currentState.DisplayName} state of {itemWorkflow.WorkflowID} workflow";
+                    }
+                    else
+                    {
+                        return $"Item does not hae any workflow state in {itemWorkflow.WorkflowID} workflow";
+                    }
+                }
+                else
+                {
+                    return $"Item {item.ID} does not have any workflow state assigned";
+                }
+            }
+            else
+            {
+                return $"Item {item.ID} does not have any workflow state assigned";
+            }
         }
 
         public List<string> HasBrokenLinks(Item item, string language)

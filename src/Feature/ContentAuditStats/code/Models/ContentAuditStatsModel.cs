@@ -27,6 +27,7 @@ namespace Feature.ContentAuditStats.Models
     public class ItemsWorkflowHistoryModel
     {
         public string ItemPath { get; set; }
+        public string CurrentWorkflowState { get; set; }
         public string WorkflowHistory { get; set; }
     }
     public class ItemsAuditLogsModel
