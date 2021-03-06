@@ -34,10 +34,7 @@
     border-color: #cccccc;
     background-color: #f0f0f0;
     padding: 0;
-      
-
 }
-
         .sc-applicationHeader-content -cas{
     position: relative;
  
@@ -52,6 +49,9 @@
         .sc .sc-text {
     margin: 15px;
 }
+         .card a {
+             font-size:15px;
+         }
     </style>
 </head>
 <body class="sc">
