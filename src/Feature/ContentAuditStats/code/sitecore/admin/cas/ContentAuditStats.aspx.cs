@@ -38,114 +38,122 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            accordion.Visible = false;
-            labelResultcount.Text = string.Empty;
-            List<Item> finalItems = new List<Item>();
-            var itemId = TextBox1.Text;
-            if (string.IsNullOrEmpty(itemId))
+            try
             {
-                labelResultcount.Text = "Please specify Item ID or Path";
-                return;
-            }
-            var language = languageDropDownList.SelectedValue;
-            var selectedRadioButtonValue = RadioButtonList1.SelectedValue;
-            var item = database.GetItem(itemId, Language.Parse(language));
-            if (item != null)
-            {
-                finalItems.Add(item);
-                switch (selectedRadioButtonValue)
+                accordion.Visible = false;
+                labelResultcount.Text = string.Empty;
+                List<Item> finalItems = new List<Item>();
+                var itemId = TextBox1.Text;
+                if (string.IsNullOrEmpty(itemId))
                 {
-                    case "1":
-                        List<Item> childItems = item.GetChildren().ToList();
-                        finalItems.AddRange(childItems);
-                        break;
-                    case "2":
-                        List<Item> descendantItems = item.Axes.GetDescendants().ToList();
-                        finalItems.AddRange(descendantItems);
-                        break;
-                    default:
-                        break;
+                    labelResultcount.Text = "Please specify Item ID or Path";
+                    return;
                 }
-                if (finalItems.Any())
+                var language = languageDropDownList.SelectedValue;
+                var selectedRadioButtonValue = RadioButtonList1.SelectedValue;
+                var item = database.GetItem(itemId, Language.Parse(language));
+                if (item != null)
                 {
-                    accordion.Visible = true;
-                    labelResultcount.Text = $"Total items found : {finalItems.Count}";
-                    // Items Updated and Published
-                    var datasourceItemsUpdatedPublished = finalItems.Select(x => new ItemsUpdatedPublishedModel()
+                    finalItems.Add(item);
+                    switch (selectedRadioButtonValue)
                     {
-                        ItemPath = x.Paths.FullPath,
-                        LastUpdatedDate = GetLastUpdated(x),
-                        IsPublished = IsPublished(x, language)
-                    });
-
-                    RptItemUpdatedPublished.DataSource = datasourceItemsUpdatedPublished;
-                    RptItemUpdatedPublished.DataBind();
-
-                    // Item with broken links                
-                    var datasourceItemsBrokenLinks = finalItems.Select(x => new ItemsBrokenLinksModel()
+                        case "1":
+                            List<Item> childItems = item.GetChildren().ToList();
+                            finalItems.AddRange(childItems);
+                            break;
+                        case "2":
+                            List<Item> descendantItems = item.Axes.GetDescendants().ToList();
+                            finalItems.AddRange(descendantItems);
+                            break;
+                        default:
+                            break;
+                    }
+                    if (finalItems.Any())
                     {
-                        ItemPath = x.Paths.FullPath,
-                        BrokenLinkReport = GetFinalString(HasBrokenLinks(x, language))
+                        accordion.Visible = true;
+                        labelResultcount.Text = $"Total items found : {finalItems.Count}";
+                        // Items Updated and Published
+                        var datasourceItemsUpdatedPublished = finalItems.Select(x => new ItemsUpdatedPublishedModel()
+                        {
+                            ItemPath = x.Paths.FullPath,
+                            LastUpdatedDate = GetLastUpdated(x),
+                            IsPublished = IsPublished(x, language)
+                        });
 
-                    });
+                        RptItemUpdatedPublished.DataSource = datasourceItemsUpdatedPublished;
+                        RptItemUpdatedPublished.DataBind();
 
-                    RptItemBrokenLinks.DataSource = datasourceItemsBrokenLinks;
-                    RptItemBrokenLinks.DataBind();
+                        // Item with broken links                
+                        var datasourceItemsBrokenLinks = finalItems.Select(x => new ItemsBrokenLinksModel()
+                        {
+                            ItemPath = x.Paths.FullPath,
+                            BrokenLinkReport = GetFinalString(HasBrokenLinks(x, language))
 
-                    // Item with personalization applied                
-                    var datasourcePersonalization = finalItems.Select(x => new ItemsPersonalisationAppliedModel()
+                        });
+
+                        RptItemBrokenLinks.DataSource = datasourceItemsBrokenLinks;
+                        RptItemBrokenLinks.DataBind();
+
+                        // Item with personalization applied                
+                        var datasourcePersonalization = finalItems.Select(x => new ItemsPersonalisationAppliedModel()
+                        {
+                            ItemPath = x.Paths.FullPath,
+                            PersonalisationApplied = GetFinalString(HasPersonalisationApplied(x, language))
+
+                        });
+
+                        RptItemPersonalization.DataSource = datasourcePersonalization;
+                        RptItemPersonalization.DataBind();
+
+                        // Item with personalization applied                
+                        var datasourceWorkFlowHistory = finalItems.Select(x => new ItemsWorkflowHistoryModel()
+                        {
+                            ItemPath = x.Paths.FullPath,
+                            CurrentWorkflowState = GetCurrentWorkFlowState(x),
+                            WorkflowHistory = GetFinalString(GetWorkflowHistory(x, language))
+
+                        });
+
+                        RptItemWorkflowHistory.DataSource = datasourceWorkFlowHistory;
+                        RptItemWorkflowHistory.DataBind();
+
+                        // Item Get Audit Logs for last 15 days                
+                        var datasourceAuditLogs = finalItems.Select(x => new ItemsAuditLogsModel()
+                        {
+                            ItemPath = x.Paths.FullPath,
+                            AuditLogs = GetAuditLogs(x, language)
+
+                        });
+
+                        RptItemAuditLogs.DataSource = datasourceAuditLogs;
+                        RptItemAuditLogs.DataBind();
+
+                    }
+                    else
                     {
-                        ItemPath = x.Paths.FullPath,
-                        PersonalisationApplied = GetFinalString(HasPersonalisationApplied(x, language))
-
-                    });
-
-                    RptItemPersonalization.DataSource = datasourcePersonalization;
-                    RptItemPersonalization.DataBind();
-
-                    // Item with personalization applied                
-                    var datasourceWorkFlowHistory = finalItems.Select(x => new ItemsWorkflowHistoryModel()
-                    {
-                        ItemPath = x.Paths.FullPath,
-                        CurrentWorkflowState = GetCurrentWorkFlowState(x),
-                        WorkflowHistory = GetFinalString(GetWorkflowHistory(x, language))
-
-                    });
-
-                    RptItemWorkflowHistory.DataSource = datasourceWorkFlowHistory;
-                    RptItemWorkflowHistory.DataBind();
-
-                    // Item Get Audit Logs for last 15 days                
-                    var datasourceAuditLogs = finalItems.Select(x => new ItemsAuditLogsModel()
-                    {
-                        ItemPath = x.Paths.FullPath,
-                        AuditLogs = GetAuditLogs(x, language)
-
-                    });
-
-                    RptItemAuditLogs.DataSource = datasourceAuditLogs;
-                    RptItemAuditLogs.DataBind();
-
+                        accordion.Visible = false;
+                        labelResultcount.Text = $"There are no items found for the given ID {itemId}";
+                    }
                 }
                 else
                 {
                     accordion.Visible = false;
-                    labelResultcount.Text = $"There are no items found for the given ID {itemId}";
+                    labelResultcount.Text = $"There is no item with Item ID : {itemId}";
                 }
-            }
-            else
-            {
-                accordion.Visible = false;
-                labelResultcount.Text = $"There is no item with Item ID : {itemId}";
-            }
 
-            // Clear and rebind dropdown list items
-            languageDropDownList.Items.Clear();
-            Dictionary<string, string> languages = GetAvailableLanguages();
-            languageDropDownList.DataSource = languages;
-            languageDropDownList.DataValueField = "Value";
-            languageDropDownList.DataTextField = "Key";
-            languageDropDownList.DataBind();
+                // Clear and rebind dropdown list items
+                languageDropDownList.Items.Clear();
+                Dictionary<string, string> languages = GetAvailableLanguages();
+                languageDropDownList.DataSource = languages;
+                languageDropDownList.DataValueField = "Value";
+                languageDropDownList.DataTextField = "Key";
+                languageDropDownList.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Sitecore.Diagnostics.Log.Error(ex.Message, ex, this);
+                labelResultcount.Text = "There is some error occurred. Please try after some time.";
+            }
         }
 
         public string GetFinalString(List<string> resultStrings)
@@ -348,7 +356,7 @@ namespace Feature.ContentAuditStats.sitecore.admin.cas
         {
             var result = new Dictionary<string, string>();
             var languages = LanguageManager.GetLanguages(database);
-            
+
             foreach (var availablelanguage in languages)
             {
                 result.Add(availablelanguage.Name, availablelanguage.Name);
