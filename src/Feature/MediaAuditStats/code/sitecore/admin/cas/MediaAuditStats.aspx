@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MediaAuditStats.aspx.cs" Inherits="Feature.MediaAuditStats.sitecore.admin.cas.MediaAuditStats" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MediaAuditStats.aspx.cs" Inherits="Feature.MediaAuditStats.sitecore.admin.cas.MediaAuditStats" %>
 
 <!DOCTYPE html>
 
