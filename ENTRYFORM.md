@@ -42,8 +42,10 @@
 - Enter Sitecore Item ID or Path
 - Select Language
 - Select if audit or stats for selected item, immediate children or descendants is required. Hit Go button to look at the generated report.
-![Hackathon Logo](UsageImages/ContentAuditStats.png)
-
+	- Content Audit & Statistics
+	![Hackathon Logo](UsageImages/ContentAuditStats.png)
+	- Media Audit & Statistics
+	![Hackathon Logo](UsageImages/MediaAuditStats.png)
 
 ## Comments
 If you'd like to make additional comments that is important for your module entry.
