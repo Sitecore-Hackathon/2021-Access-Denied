@@ -67,7 +67,7 @@
 <div class="row row-0">                    <div class="col-md-4">
                         <div class="sc-controlpanel-box">
                             <div class="sc-controlpanel-box-header">
-                                <h4><a href="" target="_blank"><img src="/temp/iconcache/office/24x24/gearwheel.png" class="" alt="" width="24" height="24" border="0"> Content Audit & Stats</a></h4>
+                                <h4><a href="ContentAuditStats.aspx" target="_blank"><img src="/temp/iconcache/office/24x24/gearwheel.png" class="" alt="" width="24" height="24" border="0">Content Audit & Stats</a></h4>
                             </div>
 
                            
@@ -76,7 +76,7 @@
                     <div class="col-md-4">
                         <div class="sc-controlpanel-box">
                             <div class="sc-controlpanel-box-header">
-                                <h4><a href="" target="_blank"><img src="/temp/iconcache/office/24x24/data.png" class="" alt="" width="24" height="24" border="0"> Media Audit & Stats</a></h4>
+                                <h4><a href="/MediaAuditStats.aspx" target="_blank"><img src="/temp/iconcache/office/24x24/data.png" class="" alt="" width="24" height="24" border="0">Media Audit & Stats</a></h4>
                             </div>
 
                             
